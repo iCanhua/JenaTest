@@ -19,7 +19,55 @@
             <artifactId>javax.mail</artifactId>
             <version>1.5.5</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.ansj</groupId>-->
+            <!--<artifactId>ansj_seg</artifactId>-->
+            <!--<version>5.1.0</version>-->
+        <!--</dependency>-->
+        <!-- Ansj中文分词工具begin -->
+        <dependency>
+            <groupId>org.ansj</groupId>
+            <artifactId>ansj_seg</artifactId>
+            <version>3.7.6</version>
+
+        </dependency>
+        <!-- Ansj中文分词工具end -->
+
+        <dependency>
+            <groupId>com.scut.fan</groupId>
+            <artifactId>fnlp-core</artifactId>
+            <version>2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/fnlp-core-2.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.scut.fan</groupId>
+            <artifactId>fnlp-commons</artifactId>
+            <version>2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-cli-1.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.scut.fan</groupId>
+            <artifactId>fnlp-trove4j</artifactId>
+            <version>2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/trove4j-3.0.3.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>mvn-repo</id>-->
+            <!--<url>http://maven.ansj.org/</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <repositories>
+        <repository>
+            <id>mvn-repo</id>
+            <url>http://maven.nlpcn.org/</url>
+        </repository>
+    </repositories>
 
 </project>

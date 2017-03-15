@@ -17,23 +17,18 @@ import java.util.Set;
 public class ontParser {
     static String NS=ontDaoUtils.getNS();
 
-
-
     //打印本体
     public static void classSum(OntModel model){
         int disease=0;
         int count=0;
         int sybspy=0;
         System.out.println("本体模型类大小："+model.listClasses().toSet().size());
-
         Iterator it=model.listClasses();
         while (it.hasNext()){
             OntClass ontClass=(OntClass) it.next();
-
             if(!ontClass.isRestriction()){
                 count++;
                // System.out.println(count+ontClass.toString());
-
             }else {
                 Restriction re=ontClass.asRestriction();
                 re.getRDFType();
@@ -47,28 +42,13 @@ public class ontParser {
                    // System.out.println("约束："+re.getOnProperty()+" ONLY "+bb);
                 }
             }
-            if(isSuperClass(NS+"疾病及综合症",ontClass)){
-                disease++;
-            }
-
-            if(ontClass.hasSuperClass(model.getOntClass(NS+"症状"))){
+            if(ontClass.hasSuperClass(model.getOntClass(NS+"疾病及综合症"))){
                 sybspy++;
                 System.out.println(ontClass.getLocalName());
             }
         }
         System.out.println("疾病个数："+disease);
         System.out.println("检查个数："+sybspy);
-    }
-    private static boolean isSuperClass(String superURI,OntClass ontClass){
-        boolean finded=false;
-        ExtendedIterator<OntClass> iterator=ontClass.listSuperClasses(false);
-        while(iterator.hasNext()){
-            OntClass superClass=(OntClass) iterator.next();
-            if(superURI.equals(superClass.getURI())){
-                finded=true;
-            }
-        }
-        return finded;
     }
 
     /**
@@ -105,7 +85,6 @@ public class ontParser {
      */
     public static Restriction getRestriction(OntModel model, OntProperty ontProperty, Resource resource){
         Iterator<Restriction> i = model.listRestrictions();
-
         while (i.hasNext()) {
             Restriction r = i.next();
             if(r.isSomeValuesFromRestriction()){
@@ -118,7 +97,6 @@ public class ontParser {
                     }
                     //System.out.println(r.asSomeValuesFromRestriction().listInstances().next().getURI());
                     return null;
-
                 }
             }
             if(r.isAllValuesFromRestriction()){
@@ -178,7 +156,6 @@ public class ontParser {
     public static void listRDFType(OntModel model,String rdf){
         OntClass ontClass=model.getOntClass(NS+rdf);
         ontClass.getSuperClass();
-
     }
 
 
@@ -203,8 +180,6 @@ public class ontParser {
 //            }
 //            System.out.println("父类 "+f.getURI());
 //        }
-
-
         //System.out.println("大小 "+iterator.toList().size());
     }
 }
